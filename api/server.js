@@ -47,3 +47,7 @@ io.on('connection',function(socket){
  
  
 });
+
+//https://www.postscapes.com/javascript-and-the-internet-of-things/
+//http://blog.ricardofilipe.com/post/getting-started-arduino-johhny-five
+//http://gabrielfeitosa.com/socketio-angularjs-comunicacao-realtime/
