@@ -1,0 +1,21 @@
+<!DOCTYPE html>  
+<html lang="en" ng-app="myApp" > <!--<![endif]-->  
+<head>  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="text/html; charset=UTF-8; X-Content-Type-Options=sniff" http-equiv="Content-Type" />
+  <title>CODETutorial Mean seed</title>
+  
+</head>  
+<body  > 
+
+    <h1>{{"Led controller"}}</h1>
+  <div ng-controller="ArduController as arduino">
+    <button ng-click="arduino.ledOn()">On</button>
+    <button ng-click="arduino.ledOff()">Off</button>
+  </div>
+ 
+ <script src="/assets/js/deps.min.js"></script>
+ <script src="/index.js"></script>
+</body>
+ 
