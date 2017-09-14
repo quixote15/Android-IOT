@@ -4,16 +4,12 @@ var server = express(); //expres api object
 var five = require('johnny-five');
 var httpServer = require("http").createServer(server);  
 var io=require('socket.io')(httpServer);
+cors = require('cors');
 
 server.listen(port); //make serve listen to port 3000
 
 server.use(express.static(__dirname + '/public')); //__dirname ??
-server.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next() //middleware wont send a response so call next middleware
-});
+server.use(cors({credentials: true, origin: 'http://localhost:4000'}));
 
 server.get('/', function(req, res) {  
         res.send("Connected");
@@ -22,15 +18,17 @@ server.get('/', function(req, res) {
 
 var led;
 
-var board = new five.Board();
+var board = new five.Board({port: "COM3"});
 //Johnny five arduino led config
 board.on("ready",function(){
     console.log('Arduino connected');
-    led = new five.Led(2);
+    led = new five.Led(12);
+    led.on();
 });
 
 
 //
+io.set('transports',['xhr-polling']); //what the fu$#$ is that ?
 io.on('connection',function(socket){
      console.log(socket.id);
  

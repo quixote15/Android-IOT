@@ -58,7 +58,7 @@ gulp.task('default',['app','server'],function() {
   gulp.src([
     'node_modules/socket.io-client/dist/socket.io.js',
     'node_modules/angular/angular.min.js',   
-    'node_modules/angular-socket-io/socket.js',
+    'node_modules/angular-socket-io/socket.min.js',
     
   ])
   .pipe(debug())
